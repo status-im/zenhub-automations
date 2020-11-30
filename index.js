@@ -3,13 +3,25 @@ const { Toolkit } = require('actions-toolkit'),
 
 const tools = new Toolkit();
 
+const handlers = {
+  create: 'create.js',
+  ready_for_review: 'create.js',
+  pull_request: 'pull_request.js'
+}
+
 Toolkit.run(async tools => {
-  const handlerRef = `${tools.context.event}.js`;
+  const handlerRef = tools.context.event;
 
   tools.log.info(`Trying to load handler: "${handlerRef}"...`);
 
   try {
-    var eventModule = require(`./lib/handlers/${handlerRef}`);
+    const file = handlers[handlerRef];
+    if (!file) {
+     tools.log.info(`Could not find handler for "${handlerRef}"`);
+     return
+    }
+
+    var eventModule = require(`./lib/handlers/${file}`);
   } catch (e) {
     console.log(e)
     return tools.exit.success('Failed to load module for event. No action necessary.');
