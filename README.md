@@ -42,7 +42,6 @@ action "zh_automations" {
   uses = "james1x0/zenhub-automations@master"
   secrets = ["GITHUB_TOKEN", "ZENHUB_API_KEY"]
   env = {
-    PR_COLUMN = "[ID of column]"
     INPROG_COLUMN = "[ID of column]"
     REVIEW_COLUMN = "[ID of column]"
   }
@@ -57,7 +56,6 @@ action "branch_zh_automations" {
   uses = "james1x0/zenhub-automations@master"
   secrets = ["GITHUB_TOKEN", "ZENHUB_API_KEY"]
   env = {
-    PR_COLUMN = "[ID of column]"
     REVIEW_COLUMN = "[ID of column]"
     INPROG_COLUMN = "[ID of column]"
   }
@@ -67,7 +65,6 @@ action "branch_zh_automations" {
 
 ### Getting your column IDs
 You'll need the following IDs for functionality on Zenhub:
-`PR_COLUMN` Where new PRs land
 `REVIEW_COLUMN` Where issues land when referenced in a PR
 `INPROG_COLUMN` Where issues land when referenced in a branch name
 
