@@ -5,6 +5,7 @@ const tools = new Toolkit();
 
 const handlers = {
   create: 'create.js',
+  issues: 'issues.js',
   ready_for_review: 'create.js',
   pull_request: 'pull_request.js'
 }
